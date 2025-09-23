@@ -3,7 +3,6 @@ module "rg" {
   rg_name  = "rg-dev-env"
   location = "Central India"
 
-
 }
 
 module "vnet" {
