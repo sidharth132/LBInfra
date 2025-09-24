@@ -35,11 +35,3 @@ jobs:
         run: terraform plan
         working-directory: Present_module/dev
 
-      # Terraform Init & Plan for child_module
-      - name: Terraform Init (child_module)
-        run: terraform init
-        working-directory: child_module
-
-      - name: Terraform Plan (child_module)
-        run: terraform plan
-        working-directory: child_module
