@@ -26,8 +26,20 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Terraform Init
+      # Terraform Init & Plan for Present_module/dev
+      - name: Terraform Init (Present_module/dev)
         run: terraform init
+        working-directory: Present_module/dev
 
-      - name: Terraform Plan
+      - name: Terraform Plan (Present_module/dev)
         run: terraform plan
+        working-directory: Present_module/dev
+
+      # Terraform Init & Plan for child_module
+      - name: Terraform Init (child_module)
+        run: terraform init
+        working-directory: child_module
+
+      - name: Terraform Plan (child_module)
+        run: terraform plan
+        working-directory: child_module
