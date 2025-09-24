@@ -1,6 +1,5 @@
 name: lbinfra
 
-
 on:
   push:
     branches:
