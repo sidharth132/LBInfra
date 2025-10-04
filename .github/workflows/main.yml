@@ -21,10 +21,11 @@ jobs:
         with:
           version: latest
 
-      - name: Azure Login
+      # Azure Login for DEV subscription
+      - name: Azure Login (DEV)
         uses: azure/login@v2
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          creds: ${{ secrets.AZURE_CREDENTIALS_DEV }}
 
       # Terraform Init & Plan for Present_module/dev
       - name: Terraform Init (Present_module/dev)
@@ -35,3 +36,17 @@ jobs:
         run: terraform plan
         working-directory: Present_module/dev
 
+      # Azure Login for PROD subscription
+      - name: Azure Login (PROD)
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS_PROD }}
+
+      # Terraform Init & Plan for Present_module/prod
+      - name: Terraform Init (Present_module/prod)
+        run: terraform init
+        working-directory: Present_module/prod
+
+      - name: Terraform Plan (Present_module/prod)
+        run: terraform plan
+        working-directory: Present_module/prod
